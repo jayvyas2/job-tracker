@@ -10,14 +10,14 @@ CREATE TABLE `candidate` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`),
   UNIQUE KEY `phone` (`phone`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 CREATE TABLE `company` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(40) NOT NULL,
   `description` tinytext,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 CREATE TABLE `position` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -32,7 +32,7 @@ CREATE TABLE `position` (
   PRIMARY KEY (`id`),
   KEY `company_id` (`company_id`),
   CONSTRAINT `position_ibfk_1` FOREIGN KEY (`company_id`) REFERENCES `company` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 
 
@@ -50,7 +50,7 @@ CREATE TABLE `interview` (
   CONSTRAINT `interview_ibfk_1` FOREIGN KEY (`position_id`) REFERENCES `position` (`id`),
   CONSTRAINT `interview_ibfk_2` FOREIGN KEY (`candidate_id`) REFERENCES `candidate` (`id`),
   CONSTRAINT `interview_ibfk_3` FOREIGN KEY (`company_id`) REFERENCES `company` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 CREATE TABLE `interview_rounds` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -61,7 +61,7 @@ CREATE TABLE `interview_rounds` (
   PRIMARY KEY (`id`),
   KEY `interview_id` (`interview_id`),
   CONSTRAINT `interview_rounds_ibfk_1` FOREIGN KEY (`interview_id`) REFERENCES `interview` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 CREATE TABLE `offer` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -74,5 +74,5 @@ CREATE TABLE `offer` (
   KEY `position_id` (`position_id`),
   CONSTRAINT `offer_ibfk_1` FOREIGN KEY (`candidate_id`) REFERENCES `candidate` (`id`),
   CONSTRAINT `offer_ibfk_2` FOREIGN KEY (`position_id`) REFERENCES `position` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
